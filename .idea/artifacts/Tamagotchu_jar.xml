@@ -2,7 +2,7 @@
   <artifact type="jar" name="Tamagotchu:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Tamagotchu_jar</output-path>
     <root id="archive" name="Tamagotchu.jar">
-      <element id="module-output" name="Tamagotchu" />
+      <element id="module-output" name="com.alexsjaan.tamagotchu" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/11/javafx-base-11.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/11/javafx-controls-11.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/11/javafx-fxml-11.jar" path-in-jar="/" />

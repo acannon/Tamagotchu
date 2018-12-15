@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="TamaApp.TamaController">
+    <top>
+        <HBox alignment="CENTER">
+            <Label fx:id="name" />
+            <Label fx:id="healthBar" />
+        </HBox>
+    </top>
+
+    <center>
+        <ImageView fx:id="tamaImage" />
+    </center>
+
+    <bottom>
+        <ToolBar>
+            <Button text="Feed" fx:id="feedButton" />
+            <Button text="Play" fx:id="playButton" />
+            <Button text="Show Stats" fx:id="statsButton" />
+            <Button text="Exit" fx:id="exitButton" />
+        </ToolBar>
+    </bottom>
+
+</BorderPane>

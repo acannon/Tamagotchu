@@ -1,4 +1,7 @@
-package tamaLogic;
+package TamaApp;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 
 public class Tamagotchu implements Runnable {
 
@@ -18,7 +21,7 @@ public class Tamagotchu implements Runnable {
     // instance variables
     private String name;
     private int age;
-    private double ttlHealth;
+    private DoubleProperty ttlHealth = new SimpleDoubleProperty();
     private int fun;
     private int full;
     private String causeOfDeath;
@@ -29,7 +32,7 @@ public class Tamagotchu implements Runnable {
         age = MIN_AGE;
         fun = MAX_FUN;
         full = MAX_FULL;
-        ttlHealth = MAX_HEALTH;
+        ttlHealth.set(MAX_HEALTH);
         name = "Chobobo";
 
         // set sprite?
@@ -93,7 +96,15 @@ name = "Chobobo";
     }
 
     private void updateTotalHealth() {
-        ttlHealth = (full*WEIGHT_OF_FULL) + (fun*WEIGHT_OF_FUN);
+        ttlHealth.set((full*WEIGHT_OF_FULL) + (fun*WEIGHT_OF_FUN));
+    }
+
+    public double getTtlHealth() {
+        return ttlHealth.get();
+    }
+
+    public DoubleProperty ttlHealthProperty() {
+        return ttlHealth;
     }
 
     private void decayStats() {
@@ -103,7 +114,7 @@ name = "Chobobo";
     }
 
     boolean isAlive() {
-        if(ttlHealth < MIN_HEALTH) {
+        if(ttlHealth.get() < MIN_HEALTH) {
             causeOfDeath = "neglect";
             return false;
         }
@@ -115,10 +126,25 @@ name = "Chobobo";
             return true;
     }
 
+    void feed() {
+        // eventually parameter can be based on type of food
+        adjustFull(20);
+        System.out.println("You fed your Tamagotchu!");
+    }
+
+    void playWith() {
+        adjustFun(20);
+        System.out.println("You played with your Tamagotchu!");
+    }
+
+    String getStats() {
+        return toString();
+    }
+
     @Override
     public String toString() {
         return String.format("%s is %d units old. It has %d/%d fullness and %d/%d fun. Its overall health is %.0f/%d.",
-                name, age, full, MAX_FULL, fun, MAX_FUN, ttlHealth, MAX_HEALTH);
+                name, age, full, MAX_FULL, fun, MAX_FUN, ttlHealth.get(), MAX_HEALTH);
     }
 
 }
