@@ -1,5 +1,6 @@
 package TamaApp;
 
+import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
@@ -28,7 +29,6 @@ public class Tamagotchu implements Runnable {
     // char[][] sprite?
 
     Tamagotchu() {
-
         age = MIN_AGE;
         fun = MAX_FUN;
         full = MAX_FULL;
@@ -38,21 +38,9 @@ public class Tamagotchu implements Runnable {
         // set sprite?
     }
 
-/*
-public Tamagotchu(int age, int fun, int full, double ttlHealth) {
-
-this.age = age;
-this.fun = fun;
-this.full = full;
-this.ttlHealth = ttlHealth;
-name = "Chobobo";
-
-// set sprite?
-}
-*/
-
+    // runnable to decay stats
     public void run() {
-        this.decayStats();
+        Platform.runLater(() -> this.decayStats());
     }
 
     void setName(String s) {
@@ -71,7 +59,7 @@ name = "Chobobo";
         age++;
     }
 
-    void adjustFull(int adj) {
+    private void adjustFull(int adj) {
         full += adj;
 
         if(full >= MAX_FULL)
@@ -83,7 +71,7 @@ name = "Chobobo";
         updateTotalHealth();
     }
 
-    void adjustFun(int adj) {
+    private void adjustFun(int adj) {
         fun += adj;
 
         if(fun >= MAX_FUN)
@@ -99,11 +87,11 @@ name = "Chobobo";
         ttlHealth.set((full*WEIGHT_OF_FULL) + (fun*WEIGHT_OF_FUN));
     }
 
-    public double getTtlHealth() {
+    double getTtlHealth() {
         return ttlHealth.get();
     }
 
-    public DoubleProperty ttlHealthProperty() {
+    DoubleProperty ttlHealthProperty() {
         return ttlHealth;
     }
 
@@ -129,12 +117,10 @@ name = "Chobobo";
     void feed() {
         // eventually parameter can be based on type of food
         adjustFull(20);
-        System.out.println("You fed your Tamagotchu!");
     }
 
     void playWith() {
         adjustFun(20);
-        System.out.println("You played with your Tamagotchu!");
     }
 
     String getStats() {
@@ -146,6 +132,5 @@ name = "Chobobo";
         return String.format("%s is %d units old. It has %d/%d fullness and %d/%d fun. Its overall health is %.0f/%d.",
                 name, age, full, MAX_FULL, fun, MAX_FUN, ttlHealth.get(), MAX_HEALTH);
     }
-
 }
 
