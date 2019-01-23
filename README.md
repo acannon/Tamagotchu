@@ -7,10 +7,11 @@ This application is being built as a self-study project to supplement my classes
 
 ## Getting Started
 
-You will need to be comfortable using a command line interface. Navigate to the 'Releases' tab and select the most recent release. Download the approrpiate jar file. Run the file with java -jar /path/to/Tamagotchu.jar
+You will need to be comfortable using a command line interface. Navigate to the 'Releases' tab and select the most recent release. Download the appropriate jar file. Run the file with java -jar /path/to/Tamagotchu.jar
 
 ## Built With
 
+* [JavaFX 11](https://openjfx.io/) - Client Application Platform
 * [Maven](https://maven.apache.org/) - Dependency Management
 
 ## Versioning
