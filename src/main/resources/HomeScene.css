@@ -1,0 +1,9 @@
+.root {
+    -fx-background-image: url("/images/space-pattern.png");
+    -fx-background-opacity: 0.5;
+    -fx-font-size: 14px;
+}
+
+.label {
+    -fx-text-fill: white;
+}
