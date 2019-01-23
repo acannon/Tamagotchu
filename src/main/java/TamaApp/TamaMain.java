@@ -17,7 +17,7 @@ public class TamaMain extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/tama.fxml"));
 
-        stage.setTitle("Tamagotchu v0.1.0");
+        stage.setTitle("Tamagotchu v0.2.0");
         System.out.println(stage.getTitle());
         stage.setScene(new Scene(root, 400, 600));
         stage.show();
